@@ -1,8 +1,8 @@
 package main
 
 import (
+	"bot-golang/commands"
 	"fmt"
-	"log"
 	"os"
 	"os/signal"
 	"syscall"
@@ -13,30 +13,32 @@ import (
 
 func main() {
 
-	//empezamos cargando el .env con nuestras variables
-	err := godotenv.Load()
+	_ = godotenv.Load()
+	TOKEN := os.Getenv("TOKEN")
+
+	dg, err := discordgo.New("Bot " + TOKEN)
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		fmt.Println(err)
+		return
 	}
 
-	tokenDiscord := os.Getenv("TOKEN")
+	dg.AddHandler(ready)
 
-	//Seteamos nuestro Token para el bot
-	discord, err := discordgo.New("Bot " + tokenDiscord)
-	if err != nil {
-		log.Fatal("Error creating discord sesion")
-	}
+	dg.AddHandler(commands.MessageCreate)
 
-	err = discord.Open()
+	err = dg.Open()
 	if err != nil {
 		fmt.Println("Error opening connection", err)
 		return
 	}
 
-	fmt.Println("Bot Runing!")
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
 	<-sc
 
-	discord.Close()
+	dg.Close()
+}
+
+func ready(s *discordgo.Session, event *discordgo.Ready) {
+	fmt.Println("Bot iniciado")
 }
