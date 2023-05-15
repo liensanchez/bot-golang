@@ -8,9 +8,9 @@ import (
 )
 
 func MessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
-
+	fmt.Println("Hello Milei")
 	if strings.HasPrefix(m.Content, ":milei") {
-		fmt.Println("Hello Milei")
+		fmt.Println("Hello Milei2")
 		s.ChannelMessageSend(m.ChannelID, "hellomilei")
 	}
 }
