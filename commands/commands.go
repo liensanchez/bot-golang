@@ -1,16 +1,19 @@
 package commands
 
 import (
-	"fmt"
-	"strings"
-
 	"github.com/bwmarrin/discordgo"
 )
 
 func MessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
-	fmt.Println("Hello Milei")
-	if strings.HasPrefix(m.Content, ":milei") {
-		fmt.Println("Hello Milei2")
-		s.ChannelMessageSend(m.ChannelID, "hellomilei")
+
+	if m.Author.ID == s.State.User.ID {
+		return
 	}
+
+	// Check if the message content is "!ping"
+	if m.Content == "!ping" {
+		// Send a "Pong!" response
+		s.ChannelMessageSend(m.ChannelID, "Pong!")
+	}
+
 }

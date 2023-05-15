@@ -23,7 +23,6 @@ func main() {
 	}
 
 	dg.AddHandler(ready)
-
 	dg.AddHandler(commands.MessageCreate)
 
 	err = dg.Open()
