@@ -22,7 +22,9 @@ func MessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		// Send a "Pong!" response
 		frases := services.GetFrase()
 
-		s.ChannelMessageSend(m.ChannelID, frases)
+		for _, f := range frases {
+			s.ChannelMessageSend(m.ChannelID, f.Text)
+		}
 	}
 
 }
