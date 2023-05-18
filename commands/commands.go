@@ -27,4 +27,21 @@ func MessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		}
 	}
 
+	if m.Content == "!chiste" {
+		// Send a "Pong!" response
+		frases := services.GetChiste()
+
+		for _, f := range frases {
+			s.ChannelMessageSend(m.ChannelID, f.Text)
+		}
+	}
+
+	if m.Content == "!refran" {
+		// Send a "Pong!" response
+		frases := services.GetRefran()
+
+		for _, f := range frases {
+			s.ChannelMessageSend(m.ChannelID, f.Text)
+		}
+	}
 }
