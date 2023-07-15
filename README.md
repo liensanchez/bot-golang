@@ -1,7 +1,7 @@
 
 # Payaso bot - Clown Bot!
 
-<img align="right" alt="DiscordGo logo" src="https://i.ibb.co/ZKSZD5y/DALL-E-2023-05-10-15-01-13-make-me-a-pixel-art-clown.png" width="150">
+<img align="right" alt="DiscordGo logo" src="/clown.png" width="150">
 Este proyecto es un bot de Discord que utiliza el paquete DiscordGo en Go. El bot se conecta a Discord y proporciona chistes, frases y refranes a los usuarios a través de una API personalizada. 
 
 ---
