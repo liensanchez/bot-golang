@@ -13,9 +13,8 @@ type Frase struct {
 }
 
 func GetFrase() []Frase {
-	URL := os.Getenv("URL")
 
-	res, err := http.Get(URL + "/frases")
+	res, err := http.Get("https://rest-api-production-739c.up.railway.app/api/frases")
 	if err != nil {
 		fmt.Println("error")
 	}
