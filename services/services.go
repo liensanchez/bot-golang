@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"os"
 )
 
 type Frase struct {
@@ -35,9 +34,7 @@ func GetFrase() []Frase {
 }
 
 func GetChiste() []Frase {
-	URL := os.Getenv("URL")
-
-	res, err := http.Get(URL + "/chistes")
+	res, err := http.Get("https://rest-api-production-739c.up.railway.app/api/chistes")
 	if err != nil {
 		fmt.Println("error")
 	}
@@ -58,9 +55,8 @@ func GetChiste() []Frase {
 }
 
 func GetRefran() []Frase {
-	URL := os.Getenv("URL")
 
-	res, err := http.Get(URL + "/refranes")
+	res, err := http.Get("https://rest-api-production-739c.up.railway.app/api/refranes")
 	if err != nil {
 		fmt.Println("error")
 	}
