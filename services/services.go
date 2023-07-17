@@ -9,7 +9,7 @@ import (
 )
 
 type Frase struct {
-	Text string `json:"frase"`
+	Text string `json:"text"`
 }
 
 func GetFrase() []Frase {
